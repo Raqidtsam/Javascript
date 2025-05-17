@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send message</title>
+    <style>
+        #content{
+            width: 50%;
+            margin: auto;
+            border: none;
+            background-color: rgb(210, 220, 230);
+            padding: 4%;
+            align-items: center;
+        }
+        input,textarea{
+            width: 90%;
+            font-size: 1.6vw;
+            padding: 1%;
+            border: none;
+        }
+        label{
+            font-size: 2.2vw;
+        }
+        input[type='submit']{
+            background-color: rgb(85, 78, 78);
+            color: white;
+            border-radius: 5%;
+            font-weight: bold;
+            padding: 2%;
+            width: 92%;
+            font-size: 2vw;
+        }
+        #title{
+            font-size: 3.5vw;
+            text-align: center;
+        }
+        #modal-overlay{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+        }
+        #modal{
+            background-color: #fa8080;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 350px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #error{
+            font-size: 2vw;
+        }
+        #modal-overlay1{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+        }
+        #modal1{
+            background-color: #1d8d22;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 350px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #success{
+            font-size: 2vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="content">
+            <div id="modal-overlay">
+                <div id="modal">
+                    <p id="error"></p>
+                </div>
+            </div>
+            <div id="modal-overlay1">
+                <div id="modal1">
+                    <p id="success"></p>
+                </div>
+            </div>
+            <h1 id="title">Send Message</h1>
+            <form id="form">
+                <h4 id="msg"></h4>
+                <label for="name">Name</label><br>
+                <input type="text" name="name" placeholder="Laurence Skvis" id="name"><br><br>
+                <label for="email">Email</label><br>
+                <input type="email" name="email" placeholder="stan1945@gmail.com" id="email"><br><br>
+                <label for="message">Message</label><br>
+                <textarea placeholder="Hello Word" name="message" id="message" cols="68" rows="3"></textarea><br><br>
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+    </div>
+    <script>
+        function openModal2(){
+            document.getElementById('modal-overlay1').style.display='flex';
+        }
+        function closeModal2(){
+            document.getElementById('modal-overlay1').style.display='none';
+        }
+        function openModal(){
+            document.getElementById('modal-overlay').style.display="flex";
+
+            document.getElementById('name').style.borderColor="red";
+            document.getElementById('name').style.borderWidth="2%";
+            document.getElementById('name').style.borderRadius="3%";
+
+            document.getElementById('email').style.borderColor="red";
+            document.getElementById('email').style.borderWidth="2%";
+            document.getElementById('email').style.borderRadius="3%";
+
+            document.getElementById('message').style.borderColor="red";
+            document.getElementById('message').style.borderWidth="2%";
+            document.getElementById('message').style.borderRadius="3%";
+        }
+        function closeModal(){
+            document.getElementById('modal-overlay').style.display="none";
+
+            document.getElementById('name').style.borderColor="green";
+            document.getElementById('name').style.borderWidth="2%";
+            document.getElementById('name').style.borderRadius="3%";
+
+
+            document.getElementById('email').style.borderColor="green";
+            document.getElementById('email').style.borderWidth="2%";
+            document.getElementById('email').style.borderRadius="3%";
+
+            document.getElementById('message').style.borderColor="green";
+            document.getElementById('message').style.borderWidth="2$";
+            document.getElementById('message').style.borderRadius="3%";
+        }
+        document.getElementById('form').addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+            var name=document.getElementById('name').value;
+            var email=document.getElementById('email').value;
+            var message=document.getElementById('message').value;
+
+            var intOfAt=email.indexOf('@');
+            var dotCom=email.indexOf(".com");
+
+            if(name=="" && email=="" && message==""){
+                setTimeout(()=>{
+                    openModal();
+                    document.getElementById('error').innerHTML="Make sure all fields are filled"
+                    setTimeout(closeModal,3000);
+                },500);
+            }else if (intOfAt>1 && dotCom==email.length-4){
+                setTimeout(()=>{
+                    openModal2();
+                    document.getElementById('success').innerHTML="successfully message sent";
+                    setTimeout(closeModal2,3000);
+                },100)
+                
+            }else{
+                setTimeout(()=>{
+                    openModal();
+                    document.getElementById('error').innerHTML="Invalid email"
+                    setTimeout(closeModal,3000);
+                },500);
+            }
+            document.getElementById('form').reset();
+        });
+        
+    </script>
+</body>
+</html>

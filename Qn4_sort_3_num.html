@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Three Numbers</title>
+    <style>
+        body{
+            background-color: rgb(184, 185, 185);
+        }
+        #form{
+            margin-left: 2%;
+            width: 80%;
+            margin: ;
+        }
+        #section2{
+            margin-left: 2%;
+        }
+        input{
+            padding: 1%;
+            width: 25%;
+            border: none;
+        }
+        button{
+            padding: 1%;
+            border: none;
+            color: white;
+            background-color: rgb(88, 89, 90);
+        }
+        #display{
+            display: flex;
+        }
+        #d_num1{
+            background-color: rgb(238, 241, 241);
+            width: 20%;
+            font-size: 2.7vw;
+            height: 30px;
+            border-width: 2%;
+            border-style: solid;
+            padding: 0.1%;
+            margin-right: 2%;
+            border-radius: 5%;
+            border-color: rgb(164, 164, 165);
+            text-align: center;
+        }
+        #d_num2{
+            background-color: rgb(238, 241, 241);
+            width: 20%;
+            height: 30px;
+            font-size: 2.7vw;
+            border-width: 2%;
+            margin-right: 2%;
+            border-style: solid;
+            padding: 0.1%;
+            border-radius: 5%;
+            border-color: rgb(164, 164, 165);
+            text-align: center;
+        }
+        #d_num3{
+            background-color: rgb(238, 241, 241);
+            width: 20%;
+            height: 30px;
+            font-size: 2.7vw;
+            border-width: 2%;
+            border-style: solid;
+            padding: 0.1%;
+            border-radius: 5%;
+            border-color: rgb(164, 164, 165);
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="form">
+            <h1>Input Section</h1>
+            <p>
+                Enter a number on each boxes below and then click one of the button below
+                Either to sort the number into ascending order ,or descending order. The Sorted 
+                numbers will be placed on the output section.
+            </p>
+            <form id="form-input">
+                <input type="number"id="num1" placeholder="number1">
+                <input type="number"id="num2" placeholder="number2">
+                <input type="number"id="num3" placeholder="number3"><br><br>
+                <button type="button" onclick="Sort_Ascend()">Sort in Ascending Order</button>
+                <button type="button"onclick="Sort_descend()">Sort in Descending Order</button>
+            </form>
+        </div>
+        <div id="section2">
+            <h1>Input Section</h1>
+            <p>
+                Once you click one of the buttons the number in the boxes A,B,C will sorted Accordingly.
+                The sorted number will be the placed on this boxes below
+            </p>
+            <div id="display">
+                <div id="d_num1"></div>
+                <div id="d_num2"></div>
+                <div id="d_num3"></div>
+            </div>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function Sort_Ascend(){
+            var no1=document.getElementById('num1').value;
+            var no2=document.getElementById('num2').value;
+            var no3=document.getElementById('num3').value;
+            if(no1=="" && no2=="" && no3==""){
+                window.alert("Ensure all fields are filled");
+            }else{
+                const arrNum=[];
+                arrNum.push(no1);
+                arrNum.push(no2);
+                arrNum.push(no3);
+                arrNum.sort(
+                    function(a,b){
+                        return a-b;
+                    }
+                );
+                document.getElementById('d_num1').innerHTML=arrNum[0];
+                document.getElementById('d_num2').innerHTML=arrNum[1];
+                document.getElementById('d_num3').innerHTML=arrNum[2];
+            }
+            document.getElementById('form-input').reset();
+        }
+        function Sort_descend(){
+            var no1=document.getElementById('num1').value;
+            var no2=document.getElementById('num2').value;
+            var no3=document.getElementById('num3').value;
+            if(no1=="" && no2=="" && no3==""){
+                window.alert("Ensure all fields are filled");
+            }else{
+                const arrNum=[];
+                arrNum.push(no1);
+                arrNum.push(no2);
+                arrNum.push(no3);
+                arrNum.sort(
+                    function(a,b){
+                        return b-a;
+                    }
+                );
+                document.getElementById('d_num1').innerHTML=arrNum[0];
+                document.getElementById('d_num2').innerHTML=arrNum[1];
+                document.getElementById('d_num3').innerHTML=arrNum[2];
+            }
+            document.getElementById('form-input').reset();
+        }
+        
+    </script>
+</body>
+</html>

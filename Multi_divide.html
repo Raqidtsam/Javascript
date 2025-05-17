@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divide Multiplication programs</title>
+    <style>
+        body{
+            background-color: rgb(207, 210, 212);
+        }
+        #content{
+            padding: 3%;
+            margin: auto;
+            width: 50%;
+        }
+        input{
+            padding: 1%;
+            font-size: 1.5vw;
+            border: none;
+        }
+        input[type="button"]{
+            background-color: rgb(80, 81, 82);
+            color: white;
+            font-weight: bold;
+        }
+        span{
+            font-size: 1.5vw;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="content">
+            <h2>What is your name?</h2>
+            <form id="form">
+                <span>1<sup>st</sup> Number</span> <input type="number" placeholder="number 1" id="num1"><br><br>
+                <span>2<sup>nd</sup> Number</span> <input type="number" placeholder="number 2" id="num2"><br><br>
+                <input type="button" value="Multiply" onclick="multiply()" id="mult">
+                <input type="button" value="Divide" onclick="divide()" id="div">
+            </form>
+            <h3> The Result Is: <strong id="displayname"></strong></h3>
+        </div>
+    </div>
+    <script>
+        function multiply(){
+            var input1=document.getElementById('num1').value;
+            var input2=document.getElementById('num2').value;
+            if(input1==""){
+                const msg='please Enter first number';
+                window.alert(msg);
+            }else if(input2==""){
+                const msg='please Enter second number';
+                window.alert(msg);
+            }else{
+                var result=input1*input2;
+                var data=document.getElementById('displayname');
+                data.innerHTML='<br>'+result;
+            }
+        }
+        function divide(){
+            var input1=document.getElementById('num1').value;
+            var input2=document.getElementById('num2').value;
+            if(input1==""){
+                const msg='please Enter first number';
+                window.alert(msg);
+            }else if(input2==""){
+                const msg='please Enter second number';
+                window.alert(msg);
+            }else{
+                var result=input1/input2;
+                var data=document.getElementById('displayname');
+                data.innerHTML='<br>'+result;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome page</title>
+    <style>
+        body{
+            background-color: rgb(168, 170, 173);
+        }
+        #demo{
+            padding: 5%;
+            margin: auto;
+            width: 75%;
+            margin-top: 10%;
+            border-radius: 5%;
+        }
+        #content{
+            margin-left: 25%;
+            padding: 3%;
+        }
+        input{
+            padding: 2%;
+            border: none;
+            border-radius: 1%;
+            font-size: 1.5vw;
+        }
+        input[type="submit"]{
+            background-color: rgb(50, 50, 53);
+            color: black;
+            padding: 2%;
+            border-radius: 1%;
+            color: white;
+            border: none;
+            padding-left: 3%;
+            padding-right: 3%;
+            font-weight: bold;
+        }
+        #modal-overlay{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+        }
+        #modal{
+            background-color: #fa8080;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 350px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #error{
+            font-size: 2vw;
+        }
+        #modal-overlay1{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+        }
+        #modal1{
+            background-color: #1d8d22;
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 350px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        #success{
+            font-size: 2vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="modal-overlay">
+            <div id="modal">
+                <p id="error"></p>
+            </div>
+        </div>
+        <div id="modal-overlay1">
+            <div id="modal1">
+                <p id="success"></p>
+            </div>
+        </div>
+        <div id="content">
+            <h2>What is your name?</h2>
+            <form id="form">
+                <input type="text" placeholder="Enter your name" id="name">
+                <input type="submit" value="Submit" id="submit">
+            </form>
+            <h3 id="displayname"></h3>
+        </div>
+    </div>
+    <script>
+        function openModal(){
+            document.getElementById('modal-overlay').style.display='flex';
+        }
+        function closeModal(){
+            document.getElementById('modal-overlay').style.display='none';
+        }
+        function openModal1(){
+            document.getElementById('modal-overlay1').style.display='flex';
+        }
+        function closeModal1(){
+            document.getElementById('modal-overlay1').style.display='none';
+        }
+        document.getElementById('form').addEventListener('submit', function(event){
+            event.preventDefault();
+
+            var input=document.getElementById('name').value;
+            if(input==""){
+                setTimeout(()=>{
+                    openModal();
+                    document.getElementById('error').innerHTML="Input your username"
+                    setTimeout(closeModal,3000);
+                },100)
+            }else{
+                setTimeout(()=>{
+                    openModal1();
+                    document.getElementById('success').innerHTML="successfully place the order";
+                    setTimeout(closeModal1,3000);
+                },100)
+            }
+            document.getElementById('form').reset();
+        });
+        
+    </script>
+</body>
+</html>
